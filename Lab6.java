@@ -1,85 +1,67 @@
-	
-
-
-
 import java.util.Scanner;
-import java.lang.Math;
-abstract class Calculate
+class patient 
 {
-	Calculate(){}
-	double x,y,result;
-	abstract void calc();
+	int ptid,ptage;
+	String ptname;
+	String doc;
+	Scanner s=new Scanner(System.in);
+	
+	void accept()
+	{
+		System.out.println("Enter patient ID, Name, Age and Doctor name ");
+		ptid=s.nextInt();
+		ptname=s.next();
+		ptage=s.nextInt();
+		doc=s.nextLine();
 	}
-class Arith1 extends Calculate
-{
-	Scanner s=new Scanner(System.in);
-	void calc()
-		{
-			System.out.println("Enter values for x and y");
-			x=s.nextDouble();
-			y=s.nextDouble();
-			result=x+y;
-			System.out.println("Sum= "+result);
-			}
-	Arith1(){}
+	void display()
+	{
+		System.out.println("Patient ID:"+ptid+"\npatient Name:"+ptname+"\nAge:"+ptage+"\nDoctor Name:"+doc);
+	}
 }
 
-
-class Arith2 extends Calculate
-{
-	Scanner s=new Scanner(System.in);
-	void calc()
-		{
-			System.out.println("Enter values for x and y");
-			x=s.nextDouble();
-			y=s.nextDouble();
-			result=x*y;
-			System.out.println("Product= "+result);
-			}
-	Arith2(){}
-}
-
-class Arith3 extends Calculate
-{
-	Scanner s=new Scanner(System.in);
-	void calc()
-		{
-			System.out.println("Enter values for x and y");
-			x=s.nextDouble();
-			y=s.nextDouble();
-			result=x/y;
-			System.out.println("Quotient="+result);
-			}
-	Arith3(){}
-}
-
-class Arith4 extends Calculate
-{
-	Scanner s=new Scanner(System.in);
-	void calc()
-		{
-			System.out.println("Enter values for x and y");
-			x=s.nextDouble();
-			y=s.nextDouble();
-			result=x-y;
-			System.out.println("Diffrence= "+result);
-			}
-	Arith4(){}
-}
-
-
-class Lab6
+class main
 {
 public static void main(String xx[])
 {
-	Arith1 a =new Arith1();
-	a.calc();
-	Arith2 b =new Arith2();
-	b.calc();
-	Arith3 c =new Arith3();
-	c.calc();
-	Arith4 d=new Arith4();
-	d.calc();
+	int n,f=0;
+	String d;
+	Scanner s=new Scanner(System.in);
+	System.out.println("Enter value of n");
+	n=s.nextInt();
+	patient p[]=new patient[n];
+	for(int i=0;i<n;i++)
+	{
+		p[i]=new patient();
+		p[i].accept();
+		System.out.println("Paient "+(i+1)+" details are accepted ");
+	}
+	System.out.println("Enter Patient ID ");
+	int pid=s.nextInt();
+	for(int i=0;i<n;i++)
+	{
+		if(p[i].ptid==pid)
+		{
+		p[i].display();
+		f=1;
+		}
+	}
+	if(f==0)
+	System.out.println("No patient found ");
+	f=0;
+	System.out.println("Enter Doctor name ");
+	d=s.nextLine();
+	for(int i=0;i<n;i++)
+	{
+		if(p[i].doc==d)
+		{
+			p[i].display();
+			f=1;
+		}
+	}
+	if(f==0)
+	System.out.println("There is no Doctor by name "+d);
+
+}
+}
 		
-}
-}
